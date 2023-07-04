@@ -14,6 +14,7 @@ describe('Authentication and verifying default setup', () => {
       .and('not.be.empty');
 
     //Assert total amount of issues on the board
+    //Test 123
     cy.get('[data-testid="list-issue"]').should('have.length', 8);
   });
 });
