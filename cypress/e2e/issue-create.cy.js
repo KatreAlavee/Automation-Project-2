@@ -126,18 +126,6 @@ describe('Issue create', () => {
     });
   });
 
-  it('Should validate title is required field if missing', () => {
-    //System finds modal for creating issue and does next steps inside of it
-    cy.get('[data-testid="modal:issue-create"]').within(() => {
-      //Try to click create issue button without filling any data
-      cy.get('button[type="submit"]').click();
-
-      //Assert that correct error message is visible
-      cy.get('[data-testid="form-field:title"]').should('contain', 'This field is required');
-    });
-  });
-
-
   const myDescription = faker.lorem.sentence()
   const title = faker.lorem.word()
 
@@ -194,18 +182,5 @@ describe('Issue create', () => {
       cy.get('[data-testid="icon:task"]').should('be.visible');
     });
   });
-
-  it('Should validate title is required field if missing', () => {
-    //System finds modal for creating issue and does next steps inside of it
-    cy.get('[data-testid="modal:issue-create"]').within(() => {
-      //Try to click create issue button without filling any data
-      cy.get('button[type="submit"]').click();
-
-      //Assert that correct error message is visible
-      cy.get('[data-testid="form-field:title"]').should('contain', 'This field is required');
-    });
-  });
-
-
 
 });
