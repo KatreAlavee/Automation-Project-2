@@ -1,7 +1,7 @@
 describe('Issue delete', () => {
     beforeEach(() => {
         cy.visit('/');
-        cy.url().should('eq', `${Cypress.env('baseUrl')}project`).then((url) => {
+        cy.url().should('eq', 'httpS://Jira.ivorreic.com/project').then((url) => {
             cy.visit(url + '/board');
             cy.contains('This is an issue of type: Task.').click();
 
@@ -33,6 +33,7 @@ describe('Issue delete', () => {
     cy.contains('Cancel').click();
     cy.get('[data-testid="modal:confirm"]').should('not.exist');
     cy.get('[data-testid="icon:close"]').first().click();
+    //Confirm that the issue is not deleted and is still on Kanban board
     cy.contains('This is an issue of type: Task.').should('be.visible');
     })    
 });
