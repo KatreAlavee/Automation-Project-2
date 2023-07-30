@@ -1,3 +1,5 @@
+import { faker } from '@faker-js/faker';
+
 describe('Issue comments creating, editing and deleting', () => {
     beforeEach(() => {
         cy.visit('/');
@@ -9,7 +11,7 @@ describe('Issue comments creating, editing and deleting', () => {
 
     const getIssueDetailsModal = () => cy.get('[data-testid="modal:issue-details"]');
 
-    it('Should create a comment successfully', () => {
+    it.skip('Should create a comment successfully', () => {
         const comment = 'TEST_COMMENT';
 
         getIssueDetailsModal().within(() => {
@@ -27,7 +29,7 @@ describe('Issue comments creating, editing and deleting', () => {
         });
     });
 
-    it.only('Should create,edit and delete comment successfully', () => {
+    it.skip('Should create,edit and delete comment successfully', () => {
         const comment = 'TEST_COMMENT';
         const comment_edited = 'TEST_COMMENT_EDITED';
 
@@ -52,13 +54,13 @@ describe('Issue comments creating, editing and deleting', () => {
             cy.contains('Delete').click();
         });
 
-            cy.get('[data-testid="modal:confirm"]').contains('button', 'Delete comment')
-                .click().should('not.exist');
-            getIssueDetailsModal().contains(comment_edited).should('not.exist');
+        cy.get('[data-testid="modal:confirm"]').contains('button', 'Delete comment')
+            .click().should('not.exist');
+        getIssueDetailsModal().contains(comment_edited).should('not.exist');
 
     });
 
-    it('Should edit a comment successfully', () => {
+    it.skip('Should edit a comment successfully', () => {
         const previousComment = 'An old silent pond...';
         const comment = 'TEST_COMMENT_EDITED';
 
@@ -84,7 +86,7 @@ describe('Issue comments creating, editing and deleting', () => {
         });
     });
 
-    it('Should delete a comment successfully', () => {
+    it.skip('Should delete a comment successfully', () => {
         getIssueDetailsModal()
             .find('[data-testid="issue-comment"]')
             .contains('Delete')
@@ -98,5 +100,38 @@ describe('Issue comments creating, editing and deleting', () => {
         getIssueDetailsModal()
             .find('[data-testid="issue-comment"]')
             .should('not.exist');
+    });
+
+    const myComment = faker.lorem.sentence()
+    const getIssueComment = () => cy.get('[data-testid="issue-comment"]')
+
+    it('Should add, edit and delete a comment successfully', () => {
+        //Add comment
+        getIssueDetailsModal()
+        cy.contains('Add a comment...').click();
+        cy.get('textarea[placeholder="Add a comment..."]').type(myComment);
+        cy.contains('button', 'Save').click()
+
+        //Assert, that comment is added and visible
+        cy.contains('Add a comment...').should('exist');
+        cy.contains(myComment).should('exist');
+
+        //Edit comment
+        getIssueComment()
+        cy.contains('Edit').click()
+        cy.get('textarea[placeholder="Add a comment..."]').clear().type(myComment)
+        cy.contains('button', 'Save').click()
+
+        //Assert, that updated comment is visible
+        cy.contains('Add a comment...').should('exist');
+        getIssueComment().should('contain', myComment);
+
+        //Remove comment
+        getIssueDetailsModal()
+        .find('[data-testid="issue-comment"]').first().contains('Delete').click()
+        cy.get('[data-testid="modal:confirm"]').contains('button', 'Delete comment').click().should('not.exist')
+
+        //assert, that comment is deleted and not visible
+        getIssueDetailsModal().contains(myComment).should('not.exist');
     });
 });
