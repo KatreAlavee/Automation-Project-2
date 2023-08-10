@@ -36,7 +36,7 @@ describe('Issue details editing', () => {
     });
   });
 
-  it.skip('Should update title, description successfully', () => {
+  it('Should update title, description successfully', () => {
       const title = 'TEST_TITLE';
       const description = 'TEST_DESCRIPTION';
 
@@ -63,42 +63,4 @@ describe('Issue details editing', () => {
 
       const getIssueDetailsModal = () => cy.get('[data-testid="modal:issue-details"]');
     });
-
-  //Create test for checking dropdown “Priority” on issue detail page. 
-  //Practice usage of array functions.
-  //Predefine variable for expected number of elements in the priority dropdown,
-  // for example “const expectedLength = 5”
-  //Predefine empty array variable. Decide, which definition is needed: const or let?
-
-  it('Should check dropdown "priority" on issue detail page', () => {
-    const expectedLength = 5
-    const priority = ["Highest", "High", "Medium", "Low", "Lowest"]
-
-    let priorities = []
-    priorities.push("Highest")
-
-
-
-    //Push into this array first element from initially selected priority value 
-    //(value, that is chosen in the dropdown when we open issue detail view).
-
-    //Access the list of all priority options (you have to open the dropdown list before by clicking on the priority field) - 
-    //choose appropriate selector to access all options from the dropdown.
-
-    //Loop through the elements: each time invoke text value from the current element and save it into your predefined array.
-
-    //Print out added value and length of the array during each iteration, using cy.log(…) command.
-
-    //Assert that created array has the same length as your predefined number, if everything is done correctly.
-
-    //Expected result: You have a test that validates values in issue priorities. Finished array must have 5 elements: [“Lowest“, “Low“, “Medium”, “High“, “Highest”]
   });
-});
-//TEST2
-// Create new test for checking that reporter name has only characters in it. Practice usage of string functions.
-//Access reporter name (find proper selector) and invoke its text value.
-//Assert that it has only characters in it (no numbers, no special characters etc). Regex to be used: /^[A-Za-z]*$/
-//Expected result: You will have a test that validates reporter matching defined regular expression
-
-//TEST3
-//Issue create all

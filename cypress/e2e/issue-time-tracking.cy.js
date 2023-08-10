@@ -27,7 +27,7 @@ describe('Issue delete', () => {
 
     const getIssueDetailsModal = () => cy.get('[data-testid="modal:issue-details"]');
 
-    it.skip('Should add, update and remove time estimation succsessfully', () => {
+    it('Should add, update and remove time estimation succsessfully', () => {
         //Select Issue for Time Tracking on Kanban board Backlog list
         cy.contains('Issue for Time Tracking').click()
         getIssueDetailsModal()

@@ -11,7 +11,7 @@ describe('Issue delete', () => {
     });
 
 
-    it.skip('Should delete an issue and validate it successfully', () => {
+    it('Should delete an issue and validate it successfully', () => {
         cy.get('[data-testid="modal:issue-details"]').within(() => {
             cy.get('[data-testid="icon:trash"]').click();
         });
@@ -23,7 +23,7 @@ describe('Issue delete', () => {
     })
 
 
-    it.skip('Should start deleting issue process and canceling this action', () => {
+    it('Should start deleting issue process and canceling this action', () => {
         cy.get('[data-testid="modal:issue-details"]').within(() => {
             cy.get('[data-testid="icon:trash"]').click();
         });
@@ -56,7 +56,7 @@ describe('Issue delete', () => {
         });
     });
 
-  it.skip('Test 1 - Delete an issue from board and validate that it is deleted', () => {
+  it('Test 1 - Delete an issue from board and validate that it is deleted', () => {
     cy.get('[data-testid="icon:trash"]').click();
     // Deletion confirmation dialog should be visible
     cy.get('[data-testid="modal:confirm"]').should('be.visible').within(()=>{

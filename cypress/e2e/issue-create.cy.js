@@ -184,3 +184,11 @@ describe('Issue create', () => {
   });
 
 });
+
+TEST3
+// Create new test, that verifies that application is removing unnecessary spaces on the board view.
+//Define issue title as a variable and add multiple spaces between words. For example: const title = ' Hello world '.
+//Create issue with this title (short summary), save the issue and observe it on the board (issue on the board will not have extra spaces and be trimmed).
+//Access created issue title (by default new issue will be created to the top of backlog, so it will be always the first element in the list of all issues on the board).
+//Assert this title with predefined variable, but remove extra spaces from it (string function trim()).
+//Expected result: You will have a test that validates, that issue title on the board does not have leading and trailing spaces in it
